@@ -103,12 +103,12 @@ void brain_generate_values(int sudoku_map[SUDOKU_LEN][SUDOKU_LEN])
     srand(time(0));
     int hidden_values = POSITIONS - START_VALUES;
 
-    int row = 0;
-    int col = 0;
     while (brain_game_mointoring(sudoku_map) == GAME_IS_RUNNING)
     {
+        int row = rand() % SUDOKU_LEN;
+        int col = rand() % SUDOKU_LEN;
         int value = (rand() % SUDOKU_LEN) + 1;
-        if (!sudoku_map[row][col])
+        if (sudoku_map[row][col] == EMPTY_POSITION)
         {
             sudoku_map[row][col] = value;
             if (brain_validate_values(sudoku_map) == VALID_INPUT)
@@ -120,14 +120,12 @@ void brain_generate_values(int sudoku_map[SUDOKU_LEN][SUDOKU_LEN])
                     row++;
                 }
 
-                continue;
             }
             else
             {
                 sudoku_map[row][col] = EMPTY_POSITION;
             }
         }
-        ui_grid(sudoku_map);
     }
     while (hidden_values)
     {
