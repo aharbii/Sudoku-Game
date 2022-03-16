@@ -65,6 +65,7 @@ int brain_validate_values(int sudoku_map[SUDOKU_LEN][SUDOKU_LEN])
             }
         }
     }
+    free(hash_table);
     return VALID_INPUT;
 }
 
