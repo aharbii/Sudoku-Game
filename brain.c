@@ -155,7 +155,7 @@ void brain_save_start_map(int sudoku_map[SUDOKU_LEN][SUDOKU_LEN], int validation
 
 int brain_get_user_input(int sudoku_map[SUDOKU_LEN][SUDOKU_LEN], int validation_map[SUDOKU_LEN][SUDOKU_LEN], int row, int col, int ans)
 {
-    if (row >= SUDOKU_LEN || col >= SUDOKU_LEN)
+    if (row >= SUDOKU_LEN || col >= SUDOKU_LEN || row < 0 || col < 0)
     {
         return INVALID_INPUT;
     }

@@ -26,14 +26,13 @@ int main()
 {
     extern int sudoku_map[SUDOKU_LEN][SUDOKU_LEN];
     extern int validation_map[SUDOKU_LEN][SUDOKU_LEN];
-            ui_grid(sudoku_map);
     ui_splash_screen();
     ui_loading();
     brain_generate_values(sudoku_map);
     brain_save_start_map(sudoku_map, validation_map);
-    ui_grid(sudoku_map);
     while (brain_game_mointoring(sudoku_map) == GAME_IS_RUNNING)
     {
+        ui_grid(sudoku_map);
         int row = 0;
         int col = 0;
         int user_ans = 0;
@@ -42,10 +41,6 @@ int main()
         if (user_answer_stats == INVALID_INPUT)
         {
             ui_invalid_position();
-            continue;
-        }
-        else
-        {
         }
     }
     if (brain_game_mointoring(sudoku_map) == USER_WIN)
